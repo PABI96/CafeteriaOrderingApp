@@ -1,0 +1,31 @@
+﻿@page
+@model CafeteriaOrderingApp.Pages.Deposits.IndexModel
+@{
+    ViewData["Title"] = "Employee Deposit";
+}
+
+<h2>Employee Deposit</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="EmployeeNumber"></label>
+        <input asp-for="EmployeeNumber" class="form-control" />
+        <span asp-validation-for="EmployeeNumber" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DepositAmount"></label>
+        <input asp-for="DepositAmount" class="form-control" />
+        <span asp-validation-for="DepositAmount" class="text-danger"></span>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Submit Deposit</button>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.Message))
+{
+    <div class="alert alert-success mt-3">@Model.Message</div>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

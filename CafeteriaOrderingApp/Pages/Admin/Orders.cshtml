@@ -1,0 +1,41 @@
+﻿@page
+@model CafeteriaOrderingApp.Pages.Admin.OrdersModel
+@{
+    ViewData["Title"] = "Manage Orders";
+}
+<h2>Manage Orders</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Employee</th>
+            <th>Date</th>
+            <th>Total</th>
+            <th>Status</th>
+            <th>Update Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model.Orders)
+        {
+            <tr>
+                <td>@order.Employee.Name</td>
+                <td>@order.OrderDate.ToString("g")</td>
+                <td>R@order.TotalAmount</td>
+                <td>@order.Status</td>
+                <td>
+                    <form method="post">
+                        <input type="hidden" name="orderId" value="@order.Id" />
+                        <select name="status" class="form-select">
+                            <option>Pending</option>
+                            <option>Preparing</option>
+                            <option>Delivering</option>
+                            <option>Delivered</option>
+                        </select>
+                        <button type="submit" class="btn btn-sm btn-primary mt-1">Update</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

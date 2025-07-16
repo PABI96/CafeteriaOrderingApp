@@ -1,0 +1,44 @@
+﻿@page
+@model CafeteriaOrderingApp.Pages.Restaurants.CreateModel
+
+        @{
+        ViewData["Title"] = "Create";
+        }
+        
+        <h1>Create</h1>
+        
+    <h4>Restaurant</h4>
+    <hr />
+    <div class="row">
+    <div class="col-md-4">
+    <form method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Restaurant.Name" class="control-label"></label>
+                <input asp-for="Restaurant.Name" class="form-control" />
+                <span asp-validation-for="Restaurant.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Restaurant.LocationDescription" class="control-label"></label>
+                <input asp-for="Restaurant.LocationDescription" class="form-control" />
+                <span asp-validation-for="Restaurant.LocationDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Restaurant.ContactNumber" class="control-label"></label>
+                <input asp-for="Restaurant.ContactNumber" class="form-control" />
+                <span asp-validation-for="Restaurant.ContactNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

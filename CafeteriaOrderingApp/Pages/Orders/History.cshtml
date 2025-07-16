@@ -1,0 +1,46 @@
+﻿@page
+@model CafeteriaOrderingApp.Pages.Orders.HistoryModel
+@{
+    ViewData["Title"] = "Order History";
+}
+<h2>Order History</h2>
+
+<form method="get">
+    <div class="form-group">
+        <label>Employee Number:</label>
+        <input name="EmployeeNumber" class="form-control" value="@Model.EmployeeNumber" />
+        <button type="submit" class="btn btn-primary mt-2">View History</button>
+    </div>
+</form>
+
+@if (Model.Orders != null && Model.Orders.Any())
+{
+    <table class="table mt-4">
+        <thead>
+            <tr>
+                <th>Order Date</th>
+                <th>Status</th>
+                <th>Total (R)</th>
+                <th>Items</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model.Orders)
+            {
+                <tr>
+                    <td>@order.OrderDate.ToString("g")</td>
+                    <td>@order.Status</td>
+                    <td>@order.TotalAmount</td>
+                    <td>
+                        <ul>
+                            @foreach (var item in order.OrderItems)
+                            {
+                                <li>@item.MenuItem.Name (x@item.Quantity)</li>
+                            }
+                        </ul>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
